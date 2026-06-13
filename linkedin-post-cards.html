@@ -756,7 +756,7 @@ function goTo(n) {
   document.getElementById('nextBtn').disabled = current === total - 1;
 }
 
-function go(dir) { goTo(Math.max(0, Math.min(total - 1, current + dir)); }
+function go(dir) { goTo(Math.max(0, Math.min(total - 1, current + dir))); }
 
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') go(1);
