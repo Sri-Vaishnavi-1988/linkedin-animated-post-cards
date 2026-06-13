@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Post Cards — Sri Vaishnavi</title>
+<style>
+:root {
+  --bg:      #0f1117;
+  --surface: #1a1d27;
+  --border:  #2e3250;
+  --purple:  #6c63ff;
+  --teal:    #00d4aa;
+  --red:     #ff6b6b;
+  --yellow:  #ffd93d;
+  --orange:  #ff9f43;
+  --muted:   #8b92b8;
+  --text:    #e8eaf6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #060810;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 40px;
+}
+
+/* ── NAV BAR ── */
+.topbar {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 20px;
+}
+.topbar h1 { font-size: 0.95rem; font-weight: 600; color: var(--teal); }
+.topbar span { font-size: 0.78rem; color: var(--muted); }
+.nav-btns { display: flex; gap: 10px; }
+.nav-btn {
+  background: var(--border);
+  border: none;
+  color: var(--text);
+  padding: 7px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: background 0.2s;
+}
+.nav-btn:hover { background: var(--purple); }
+.nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+/* ── SLIDE COUNTER ── */
+.counter {
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 0 12px;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ── CARD WRAPPER ── */
+.card-wrap {
+  width: 600px;
+  height: 600px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(108,99,255,0.25), 0 0 120px rgba(0,212,170,0.08);
+}
+
+/* hide all slides, show only active */
+.slide { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+.slide.active { display: block; }
+
+/* ── SCREENSHOT HINT ── */
+.hint {
+  margin-top: 14px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-align: center;
+}
+.hint strong { color: var(--yellow); }
+
+/* ── DOTS INDICATOR ── */
+.dots {
+  display: flex;
+  gap: 7px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+}
+.dot-btn {
+  width: 28px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, width 0.2s;
+}
+.dot-btn.active { background: var(--purple); width: 36px; }
+
+/* ── SHARED CARD BASE ── */
+svg.card { width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <h1>LinkedIn Post Cards</h1>
+    <span>Screenshot each card → use as LinkedIn image</span>
+  </div>
+  <div class="nav-btns">
+    <button class="nav-btn" id="prevBtn" onclick="go(-1)" disabled>← Prev</button>
+    <span class="counter" id="counter">1 / 10</span>
+    <button class="nav-btn" id="nextBtn" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<div class="card-wrap" id="cardWrap">
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 1 — SQL Window Functions
+════════════════════════════════════════════════════════════ -->
+<div class="slide active" id="s1">
+<svg class="card" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg1" cx="50%" cy="50%"><stop offset="0%" stop-color="#1a1d27"/><stop offset="100%" stop-color="#0f1117"/></radialGradient>
+    <filter id="glow1"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#6c63ff" stop-opacity="0"/><stop offset="50%" stop-color="#6c63ff"/><stop offset="100%" stop-color="#00d4aa" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg1)"/>
+  <!-- grid lines -->
+  <line x1="0" y1="300" x2="600" y2="300" stroke="#2e3250" stroke-width="1" opacity="0.5"/>
+  <line x1="300" y1="0" x2="300" y2="600" stroke="#2e3250" stroke-width="1" opacity="0.5"/>
+  <!-- corner accents -->
+  <rect x="0" y="0" width="80" height="4" fill="#6c63ff" opacity="0.8"/>
+  <rect x="0" y="0" width="4" height="80" fill="#6c63ff" opacity="0.8"/>
+  <rect x="520" y="596" width="80" height="4" fill="#00d4aa" opacity="0.8"/>
+  <rect x="596" y="520" width="4" height="80" fill="#00d4aa" opacity="0.8"/>
+  <!-- animated flowing line -->
+  <path d="M 60 300 Q 180 200 300 300 Q 420 400 540 300" stroke="url(#lineGrad1)" stroke-width="2" fill="none" stroke-dasharray="8 5">
+    <animate attributeName="stroke-dashoffset" from="0" to="-260" dur="3s" repeatCount="indefinite"/>
+  </path>
+  <!-- heading -->
+  <text x="300" y="72" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#6c63ff" font-weight="600" letter-spacing="3">SQL MASTERY</text>
+  <text x="300" y="110" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="32" fill="#e8eaf6" font-weight="700">Window Functions</text>
+  <text x="300" y="138" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="14" fill="#8b92b8">4 functions that change how you analyze data</text>
+  <!-- divider -->
+  <line x1="80" y1="158" x2="520" y2="158" stroke="#2e3250" stroke-width="1"/>
+  <!-- function cards -->
+  <!-- ROW_NUMBER -->
+  <rect x="60" y="170" width="228" height="88" rx="10" fill="#1a1d27" stroke="#6c63ff" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="60" y="170" width="5" height="88" rx="2" fill="#6c63ff"/>
+  <text x="78" y="194" font-family="Segoe UI,sans-serif" font-size="13" fill="#6c63ff" font-weight="700">ROW_NUMBER()</text>
+  <text x="78" y="213" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Unique rank per row in a partition</text>
+  <text x="78" y="232" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.7">→ First purchase per customer</text>
+  <text x="78" y="248" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.7">→ Deduplicate records</text>
+  <!-- LAG/LEAD -->
+  <rect x="312" y="170" width="228" height="88" rx="10" fill="#1a1d27" stroke="#00d4aa" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="312" y="170" width="5" height="88" rx="2" fill="#00d4aa"/>
+  <text x="330" y="194" font-family="Segoe UI,sans-serif" font-size="13" fill="#00d4aa" font-weight="700">LAG() / LEAD()</text>
+  <text x="330" y="213" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Compare to prev / next row</text>
+  <text x="330" y="232" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.7">→ MoM revenue change</text>
+  <text x="330" y="248" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.7">→ Day-over-day delta</text>
+  <!-- SUM OVER -->
+  <rect x="60" y="272" width="228" height="88" rx="10" fill="#1a1d27" stroke="#ffd93d" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="60" y="272" width="5" height="88" rx="2" fill="#ffd93d"/>
+  <text x="78" y="296" font-family="Segoe UI,sans-serif" font-size="13" fill="#ffd93d" font-weight="700">SUM() OVER()</text>
+  <text x="78" y="315" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Running totals without GROUP BY</text>
+  <text x="78" y="334" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.7">→ Cumulative revenue by day</text>
+  <text x="78" y="350" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.7">→ Rolling 7-day average</text>
+  <!-- RANK -->
+  <rect x="312" y="272" width="228" height="88" rx="10" fill="#1a1d27" stroke="#ff6b6b" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="312" y="272" width="5" height="88" rx="2" fill="#ff6b6b"/>
+  <text x="330" y="296" font-family="Segoe UI,sans-serif" font-size="13" fill="#ff6b6b" font-weight="700">RANK() / DENSE_RANK()</text>
+  <text x="330" y="315" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Rank with / without tie gaps</text>
+  <text x="330" y="334" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.7">→ Top 3 reps per region</text>
+  <text x="330" y="350" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.7">→ Product ranking by sales</text>
+  <!-- syntax box -->
+  <rect x="60" y="376" width="480" height="48" rx="8" fill="#0f1117" stroke="#2e3250" stroke-width="1"/>
+  <text x="80" y="396" font-family="Consolas,monospace" font-size="11" fill="#6c63ff">FUNCTION()</text>
+  <text x="170" y="396" font-family="Consolas,monospace" font-size="11" fill="#e8eaf6">OVER (</text>
+  <text x="220" y="396" font-family="Consolas,monospace" font-size="11" fill="#00d4aa">PARTITION BY</text>
+  <text x="335" y="396" font-family="Consolas,monospace" font-size="11" fill="#e8eaf6">col</text>
+  <text x="360" y="396" font-family="Consolas,monospace" font-size="11" fill="#ffd93d">ORDER BY</text>
+  <text x="440" y="396" font-family="Consolas,monospace" font-size="11" fill="#e8eaf6">col)</text>
+  <text x="80" y="413" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">PARTITION BY = "within each group" — once you get this, everything clicks</text>
+  <!-- flowing dots on the line -->
+  <circle r="4" fill="#6c63ff" filter="url(#glow1)">
+    <animateMotion dur="3s" repeatCount="indefinite">
+      <mpath href="#wfpath1"/>
+    </animateMotion>
+  </circle>
+  <path id="wfpath1" d="M 60 300 Q 180 200 300 300 Q 420 400 540 300" fill="none"/>
+  <!-- footer -->
+  <line x1="60" y1="450" x2="540" y2="450" stroke="#2e3250" stroke-width="1"/>
+  <text x="300" y="472" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">#SQL  #DataAnalytics  #DataAnalyst  #SQLTips  #Analytics</text>
+  <text x="300" y="492" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#6c63ff" opacity="0.7">Sri Vaishnavi Devarashetty · Senior Data Analyst</text>
+  <!-- particles -->
+  <circle cx="540" cy="80" r="2" fill="#6c63ff" opacity="0.6"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.1s" repeatCount="indefinite"/></circle>
+  <circle cx="80" cy="520" r="2" fill="#00d4aa" opacity="0.6"><animate attributeName="opacity" values="0.1;0.6;0.1" dur="1.7s" repeatCount="indefinite"/></circle>
+  <circle cx="480" cy="440" r="1.5" fill="#ffd93d" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" repeatCount="indefinite"/></circle>
+</svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 2 — The 3-Sentence Rule
+════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s2">
+<svg class="card" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg2" cx="30%" cy="30%"><stop offset="0%" stop-color="#1d1627"/><stop offset="100%" stop-color="#0f1117"/></radialGradient>
+    <filter id="glow2"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg2)"/>
+  <rect x="0" y="0" width="600" height="4" fill="#6c63ff"/>
+  <rect x="0" y="596" width="600" height="4" fill="#00d4aa"/>
+  <!-- bg glow orbs -->
+  <circle cx="100" cy="100" r="120" fill="#6c63ff" opacity="0.04"/>
+  <circle cx="500" cy="500" r="100" fill="#00d4aa" opacity="0.05"/>
+  <!-- label -->
+  <text x="300" y="62" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#6c63ff" letter-spacing="3" font-weight="600">STAKEHOLDER COMMUNICATION</text>
+  <text x="300" y="100" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="30" fill="#e8eaf6" font-weight="700">The 3-Sentence Rule</text>
+  <text x="300" y="124" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#8b92b8">Every analyst needs this framework</text>
+  <line x1="80" y1="142" x2="520" y2="142" stroke="#2e3250" stroke-width="1"/>
+  <!-- Step 1 -->
+  <rect x="60" y="158" width="480" height="90" rx="12" fill="#1a1d27" stroke="#ff6b6b" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="94" cy="203" r="18" fill="#ff6b6b" opacity="0.15"/>
+  <circle cx="94" cy="203" r="18" fill="none" stroke="#ff6b6b" stroke-width="1.5"/>
+  <text x="94" y="208" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="14" fill="#ff6b6b" font-weight="700">1</text>
+  <text x="124" y="192" font-family="Segoe UI,sans-serif" font-size="13" fill="#ff6b6b" font-weight="700">What happened?</text>
+  <text x="124" y="211" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6" opacity="0.85">"Revenue dropped 8% week-over-week."</text>
+  <text x="124" y="232" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">State the fact. One sentence. No hedge words.</text>
+  <!-- Step 2 -->
+  <rect x="60" y="262" width="480" height="90" rx="12" fill="#1a1d27" stroke="#ffd93d" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="94" cy="307" r="18" fill="#ffd93d" opacity="0.15"/>
+  <circle cx="94" cy="307" r="18" fill="none" stroke="#ffd93d" stroke-width="1.5"/>
+  <text x="94" y="312" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="14" fill="#ffd93d" font-weight="700">2</text>
+  <text x="124" y="296" font-family="Segoe UI,sans-serif" font-size="13" fill="#ffd93d" font-weight="700">Why?</text>
+  <text x="124" y="315" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6" opacity="0.85">"22% drop in mobile conversions at checkout."</text>
+  <text x="124" y="336" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Root cause. Specific. Show you dug deeper.</text>
+  <!-- Step 3 -->
+  <rect x="60" y="366" width="480" height="90" rx="12" fill="#1a1d27" stroke="#00d4aa" stroke-width="1.5" stroke-opacity="0.7"/>
+  <circle cx="94" cy="411" r="18" fill="#00d4aa" opacity="0.15"/>
+  <circle cx="94" cy="411" r="18" fill="none" stroke="#00d4aa" stroke-width="1.5"/>
+  <text x="94" y="416" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="14" fill="#00d4aa" font-weight="700">3</text>
+  <text x="124" y="400" font-family="Segoe UI,sans-serif" font-size="13" fill="#00d4aa" font-weight="700">What should we do?</text>
+  <text x="124" y="419" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6" opacity="0.85">"A/B test the mobile checkout — ready Thu."</text>
+  <text x="124" y="440" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Your recommendation + timeline. Own it.</text>
+  <!-- connector dots animated -->
+  <circle cx="94" cy="248" r="3" fill="#ff6b6b"><animate attributeName="cy" values="248;250;248" dur="1.5s" repeatCount="indefinite"/></circle>
+  <circle cx="94" cy="352" r="3" fill="#ffd93d"><animate attributeName="cy" values="352;354;352" dur="1.5s" repeatCount="indefinite"/></circle>
+  <!-- footer -->
+  <line x1="60" y1="474" x2="540" y2="474" stroke="#2e3250" stroke-width="1"/>
+  <text x="300" y="494" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">#StakeholderCommunication  #DataAnalytics  #CareerGrowth</text>
+  <text x="300" y="514" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#6c63ff" opacity="0.7">Sri Vaishnavi Devarashetty · Senior Data Analyst</text>
+</svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 3 — SQL JOINs Visual
+════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s3">
+<svg class="card" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg3" cx="50%" cy="50%"><stop offset="0%" stop-color="#111827"/><stop offset="100%" stop-color="#0f1117"/></radialGradient>
+    <filter id="glow3"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <clipPath id="clipA"><circle cx="210" cy="290" r="90"/></clipPath>
+    <clipPath id="clipB"><circle cx="390" cy="290" r="90"/></clipPath>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg3)"/>
+  <rect x="0" y="0" width="4" height="600" fill="#6c63ff" opacity="0.8"/>
+  <rect x="596" y="0" width="4" height="600" fill="#00d4aa" opacity="0.8"/>
+  <text x="300" y="60" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#6c63ff" letter-spacing="3" font-weight="600">SQL MASTERY</text>
+  <text x="300" y="96" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="30" fill="#e8eaf6" font-weight="700">JOINs — Explained Simply</text>
+  <text x="300" y="120" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#8b92b8">The one concept that changes your row counts forever</text>
+  <line x1="80" y1="136" x2="520" y2="136" stroke="#2e3250" stroke-width="1"/>
+  <!-- INNER JOIN venn -->
+  <circle cx="210" cy="290" r="90" fill="#6c63ff" opacity="0.08" stroke="#6c63ff" stroke-width="1.5" stroke-opacity="0.6"/>
+  <circle cx="390" cy="290" r="90" fill="#00d4aa" opacity="0.08" stroke="#00d4aa" stroke-width="1.5" stroke-opacity="0.6"/>
+  <!-- intersection fill animated -->
+  <path d="M 300 207 A 90 90 0 0 1 300 373 A 90 90 0 0 1 300 207" fill="#6c63ff" opacity="0.0">
+    <animate attributeName="opacity" values="0;0.18;0" dur="3s" repeatCount="indefinite"/>
+  </path>
+  <!-- table labels -->
+  <text x="168" y="285" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#6c63ff" font-weight="700">Customers</text>
+  <text x="168" y="302" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">1,000 rows</text>
+  <text x="432" y="285" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#00d4aa" font-weight="700">Orders</text>
+  <text x="432" y="302" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">5,000 rows</text>
+  <!-- join type pills -->
+  <rect x="60" y="396" width="106" height="34" rx="8" fill="#6c63ff" opacity="0.15" stroke="#6c63ff" stroke-width="1"/>
+  <text x="113" y="418" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#6c63ff" font-weight="700">INNER JOIN</text>
+  <rect x="180" y="396" width="106" height="34" rx="8" fill="#00d4aa" opacity="0.15" stroke="#00d4aa" stroke-width="1"/>
+  <text x="233" y="418" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#00d4aa" font-weight="700">LEFT JOIN</text>
+  <rect x="300" y="396" width="106" height="34" rx="8" fill="#ffd93d" opacity="0.15" stroke="#ffd93d" stroke-width="1"/>
+  <text x="353" y="418" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#ffd93d" font-weight="700">RIGHT JOIN</text>
+  <rect x="420" y="396" width="120" height="34" rx="8" fill="#ff9f43" opacity="0.15" stroke="#ff9f43" stroke-width="1"/>
+  <text x="480" y="418" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#ff9f43" font-weight="700">FULL OUTER</text>
+  <!-- key insight -->
+  <rect x="60" y="444" width="480" height="50" rx="10" fill="#1a1d27" stroke="#ffd93d" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="300" y="464" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#ffd93d" font-weight="600">Pro tip:</text>
+  <text x="300" y="482" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Start with LEFT JOIN. Switch to INNER only when you're sure.</text>
+  <!-- animated pulsing intersection -->
+  <circle cx="300" cy="290" r="4" fill="#6c63ff" filter="url(#glow3)"><animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle>
+  <line x1="60" y1="510" x2="540" y2="510" stroke="#2e3250" stroke-width="1"/>
+  <text x="300" y="530" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">#SQL  #DataAnalytics  #DataAnalyst  #SQLTips  #Analytics</text>
+  <text x="300" y="548" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#6c63ff" opacity="0.7">Sri Vaishnavi Devarashetty · Senior Data Analyst</text>
+</svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 4 — Tableau 5 Design Rules
+════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s4">
+<svg class="card" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg4" cx="70%" cy="30%"><stop offset="0%" stop-color="#1a1d27"/><stop offset="100%" stop-color="#0f1117"/></radialGradient>
+    <filter id="glow4"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg4)"/>
+  <!-- animated grid -->
+  <line x1="0" y1="150" x2="600" y2="150" stroke="#2e3250" stroke-width="0.5" opacity="0.4"/>
+  <line x1="0" y1="450" x2="600" y2="450" stroke="#2e3250" stroke-width="0.5" opacity="0.4"/>
+  <line x1="150" y1="0" x2="150" y2="600" stroke="#2e3250" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="0" x2="450" y2="600" stroke="#2e3250" stroke-width="0.5" opacity="0.4"/>
+  <rect x="0" y="0" width="600" height="4" fill="#ff9f43"/>
+  <text x="300" y="58" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#ff9f43" letter-spacing="3" font-weight="600">TABLEAU</text>
+  <text x="300" y="94" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="28" fill="#e8eaf6" font-weight="700">5 Dashboard Design Rules</text>
+  <text x="300" y="118" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#8b92b8">That make stakeholders actually trust your work</text>
+  <line x1="60" y1="132" x2="540" y2="132" stroke="#2e3250" stroke-width="1"/>
+  <!-- 5 rules as rows -->
+  <!-- Rule 1 -->
+  <rect x="60" y="146" width="480" height="60" rx="8" fill="#1a1d27" stroke="#ff9f43" stroke-width="1" stroke-opacity="0.4"/>
+  <rect x="60" y="146" width="4" height="60" rx="2" fill="#ff9f43"/>
+  <circle cx="88" cy="176" r="12" fill="#ff9f43" opacity="0.2"/><text x="88" y="181" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#ff9f43" font-weight="700">1</text>
+  <text x="112" y="168" font-family="Segoe UI,sans-serif" font-size="13" fill="#e8eaf6" font-weight="600">One question per view</text>
+  <text x="112" y="186" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Every sheet answers exactly ONE business question</text>
+  <!-- Rule 2 -->
+  <rect x="60" y="216" width="480" height="60" rx="8" fill="#1a1d27" stroke="#6c63ff" stroke-width="1" stroke-opacity="0.4"/>
+  <rect x="60" y="216" width="4" height="60" rx="2" fill="#6c63ff"/>
+  <circle cx="88" cy="246" r="12" fill="#6c63ff" opacity="0.2"/><text x="88" y="251" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#6c63ff" font-weight="700">2</text>
+  <text x="112" y="238" font-family="Segoe UI,sans-serif" font-size="13" fill="#e8eaf6" font-weight="600">Remove every default</text>
+  <text x="112" y="256" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">If Tableau chose it — question it. Custom = trust.</text>
+  <!-- Rule 3 -->
+  <rect x="60" y="286" width="480" height="60" rx="8" fill="#1a1d27" stroke="#00d4aa" stroke-width="1" stroke-opacity="0.4"/>
+  <rect x="60" y="286" width="4" height="60" rx="2" fill="#00d4aa"/>
+  <circle cx="88" cy="316" r="12" fill="#00d4aa" opacity="0.2"/><text x="88" y="321" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#00d4aa" font-weight="700">3</text>
+  <text x="112" y="308" font-family="Segoe UI,sans-serif" font-size="13" fill="#e8eaf6" font-weight="600">Use tooltips as a second layer</text>
+  <text x="112" y="326" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Hover = deeper dive. Main view = clean.</text>
+  <!-- Rule 4 -->
+  <rect x="60" y="356" width="480" height="60" rx="8" fill="#1a1d27" stroke="#ffd93d" stroke-width="1" stroke-opacity="0.4"/>
+  <rect x="60" y="356" width="4" height="60" rx="2" fill="#ffd93d"/>
+  <circle cx="88" cy="386" r="12" fill="#ffd93d" opacity="0.2"/><text x="88" y="391" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#ffd93d" font-weight="700">4</text>
+  <text x="112" y="378" font-family="Segoe UI,sans-serif" font-size="13" fill="#e8eaf6" font-weight="600">Align everything</text>
+  <text x="112" y="396" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Misalignment destroys professionalism instantly</text>
+  <!-- Rule 5 -->
+  <rect x="60" y="426" width="480" height="60" rx="8" fill="#1a1d27" stroke="#ff6b6b" stroke-width="1" stroke-opacity="0.4"/>
+  <rect x="60" y="426" width="4" height="60" rx="2" fill="#ff6b6b"/>
+  <circle cx="88" cy="456" r="12" fill="#ff6b6b" opacity="0.2"/><text x="88" y="461" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#ff6b6b" font-weight="700">5</text>
+  <text x="112" y="448" font-family="Segoe UI,sans-serif" font-size="13" fill="#e8eaf6" font-weight="600">Always add "Last Updated"</text>
+  <text x="112" y="466" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Answer "Is this current?" before they ask</text>
+  <!-- footer -->
+  <line x1="60" y1="502" x2="540" y2="502" stroke="#2e3250" stroke-width="1"/>
+  <text x="300" y="522" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">#Tableau  #DataVisualization  #DataAnalytics  #Dashboard</text>
+  <text x="300" y="540" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#ff9f43" opacity="0.7">Sri Vaishnavi Devarashetty · Senior Data Analyst</text>
+  <!-- animated particle -->
+  <circle cx="540" cy="100" r="2" fill="#ff9f43"><animate attributeName="opacity" values="0.7;0.1;0.7" dur="2s" repeatCount="indefinite"/></circle>
+  <circle cx="80" cy="500" r="2" fill="#6c63ff"><animate attributeName="opacity" values="0.1;0.7;0.1" dur="2.3s" repeatCount="indefinite"/></circle>
+</svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 5 — CASE WHEN Power
+════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s5">
+<svg class="card" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg5" cx="50%" cy="80%"><stop offset="0%" stop-color="#1a1d27"/><stop offset="100%" stop-color="#0f1117"/></radialGradient>
+    <filter id="glow5"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="codeGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00d4aa" stop-opacity="0.1"/><stop offset="100%" stop-color="#6c63ff" stop-opacity="0.1"/></linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg5)"/>
+  <rect x="0" y="0" width="4" height="600" fill="url(#codeGrad)"/>
+  <rect x="596" y="0" width="4" height="600" fill="url(#codeGrad)"/>
+  <text x="300" y="58" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#00d4aa" letter-spacing="3" font-weight="600">SQL MASTERY</text>
+  <text x="300" y="94" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="30" fill="#e8eaf6" font-weight="700">CASE WHEN — Level Up</text>
+  <text x="300" y="118" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#8b92b8">Most analysts use 10% of its power</text>
+  <line x1="60" y1="132" x2="540" y2="132" stroke="#2e3250" stroke-width="1"/>
+  <!-- basic -->
+  <text x="68" y="156" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8" font-weight="600">BASIC — What most people do</text>
+  <rect x="60" y="162" width="480" height="72" rx="8" fill="#0f1117" stroke="#2e3250" stroke-width="1"/>
+  <text x="80" y="182" font-family="Consolas,monospace" font-size="10.5" fill="#6c63ff">CASE WHEN</text><text x="163" y="182" font-family="Consolas,monospace" font-size="10.5" fill="#e8eaf6"> revenue &gt; 1000 </text><text x="356" y="182" font-family="Consolas,monospace" font-size="10.5" fill="#ffd93d">THEN</text><text x="393" y="182" font-family="Consolas,monospace" font-size="10.5" fill="#00d4aa"> 'High'</text>
+  <text x="80" y="200" font-family="Consolas,monospace" font-size="10.5" fill="#6c63ff">             ELSE</text><text x="175" y="200" font-family="Consolas,monospace" font-size="10.5" fill="#00d4aa"> 'Low' </text><text x="225" y="200" font-family="Consolas,monospace" font-size="10.5" fill="#6c63ff">END AS</text><text x="278" y="200" font-family="Consolas,monospace" font-size="10.5" fill="#ffd93d"> tier</text>
+  <text x="80" y="222" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Simple labelling — good, but only the beginning</text>
+  <!-- advanced -->
+  <text x="68" y="252" font-family="Segoe UI,sans-serif" font-size="11" fill="#00d4aa" font-weight="600">ADVANCED — What changes your career</text>
+  <rect x="60" y="258" width="480" height="116" rx="8" fill="#0f1117" stroke="#00d4aa" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="80" y="278" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">SELECT</text><text x="125" y="278" font-family="Consolas,monospace" font-size="10" fill="#e8eaf6"> month,</text>
+  <text x="80" y="295" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">  SUM(</text><text x="124" y="295" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">CASE WHEN</text><text x="200" y="295" font-family="Consolas,monospace" font-size="10" fill="#e8eaf6"> region=</text><text x="256" y="295" font-family="Consolas,monospace" font-size="10" fill="#00d4aa">'North'</text><text x="305" y="295" font-family="Consolas,monospace" font-size="10" fill="#ffd93d"> THEN</text><text x="346" y="295" font-family="Consolas,monospace" font-size="10" fill="#e8eaf6"> revenue </text><text x="408" y="295" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">ELSE</text><text x="437" y="295" font-family="Consolas,monospace" font-size="10" fill="#e8eaf6"> 0 </text><text x="456" y="295" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">END)</text>
+  <text x="105" y="312" font-family="Consolas,monospace" font-size="10" fill="#ffd93d">AS north_revenue,</text>
+  <text x="80" y="329" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">  SUM(</text><text x="124" y="329" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">CASE WHEN</text><text x="200" y="329" font-family="Consolas,monospace" font-size="10" fill="#e8eaf6"> region=</text><text x="256" y="329" font-family="Consolas,monospace" font-size="10" fill="#00d4aa">'South'</text><text x="305" y="329" font-family="Consolas,monospace" font-size="10" fill="#ffd93d"> THEN</text><text x="346" y="329" font-family="Consolas,monospace" font-size="10" fill="#e8eaf6"> revenue </text><text x="408" y="329" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">ELSE</text><text x="437" y="329" font-family="Consolas,monospace" font-size="10" fill="#e8eaf6"> 0 </text><text x="456" y="329" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">END)</text>
+  <text x="105" y="346" font-family="Consolas,monospace" font-size="10" fill="#ffd93d">AS south_revenue</text>
+  <text x="80" y="363" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">FROM</text><text x="112" y="363" font-family="Consolas,monospace" font-size="10" fill="#e8eaf6"> sales </text><text x="156" y="363" font-family="Consolas,monospace" font-size="10" fill="#6c63ff">GROUP BY</text><text x="224" y="363" font-family="Consolas,monospace" font-size="10" fill="#e8eaf6"> month</text>
+  <!-- result badge -->
+  <rect x="60" y="388" width="480" height="42" rx="8" fill="#00d4aa" opacity="0.1" stroke="#00d4aa" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="300" y="405" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#00d4aa" font-weight="600">Result: Pivot table — no Python, no Excel needed</text>
+  <text x="300" y="422" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">One query. Multiple conditional aggregations.</text>
+  <!-- scanning line animation -->
+  <line x1="60" y1="258" x2="540" y2="258" stroke="#00d4aa" stroke-width="1" opacity="0.4">
+    <animate attributeName="y1" values="258;374;258" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="y2" values="258;374;258" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite"/>
+  </line>
+  <line x1="60" y1="446" x2="540" y2="446" stroke="#2e3250" stroke-width="1"/>
+  <text x="300" y="466" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">#SQL  #DataAnalytics  #DataAnalyst  #SQLTips  #Analytics</text>
+  <text x="300" y="484" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#00d4aa" opacity="0.7">Sri Vaishnavi Devarashetty · Senior Data Analyst</text>
+</svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 6 — Scope Creep Steps
+════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s6">
+<svg class="card" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg6" cx="80%" cy="20%"><stop offset="0%" stop-color="#1d1a27"/><stop offset="100%" stop-color="#0f1117"/></radialGradient>
+    <filter id="glow6"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg6)"/>
+  <rect x="0" y="596" width="600" height="4" fill="#ff6b6b"/>
+  <text x="300" y="58" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#ff6b6b" letter-spacing="3" font-weight="600">STAKEHOLDER MANAGEMENT</text>
+  <text x="300" y="93" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="26" fill="#e8eaf6" font-weight="700">Handle Scope Creep</text>
+  <text x="300" y="116" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#ff6b6b" font-weight="600">"Can we just add one more thing?"</text>
+  <text x="300" y="136" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#8b92b8">Here's exactly how to respond</text>
+  <line x1="60" y1="152" x2="540" y2="152" stroke="#2e3250" stroke-width="1"/>
+  <!-- 4 steps with connecting arrows -->
+  <!-- Step boxes -->
+  <rect x="60" y="166" width="480" height="66" rx="10" fill="#1a1d27" stroke="#6c63ff" stroke-width="1.5"/>
+  <rect x="60" y="166" width="5" height="66" rx="2" fill="#6c63ff"/>
+  <text x="84" y="189" font-family="Segoe UI,sans-serif" font-size="10" fill="#6c63ff" font-weight="700">STEP 1 — Don't say yes immediately</text>
+  <text x="84" y="207" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6">"Let me understand what you're trying to decide with that."</text>
+  <text x="84" y="224" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Pause. Clarify. Don't commit.</text>
+  <!-- arrow -->
+  <line x1="300" y1="232" x2="300" y2="248" stroke="#6c63ff" stroke-width="1.5" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1s" repeatCount="indefinite"/></line>
+  <polygon points="295,248 300,256 305,248" fill="#6c63ff"/>
+  <rect x="60" y="258" width="480" height="66" rx="10" fill="#1a1d27" stroke="#00d4aa" stroke-width="1.5"/>
+  <rect x="60" y="258" width="5" height="66" rx="2" fill="#00d4aa"/>
+  <text x="84" y="281" font-family="Segoe UI,sans-serif" font-size="10" fill="#00d4aa" font-weight="700">STEP 2 — Scope it honestly</text>
+  <text x="84" y="299" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6">"Adding that pushes delivery by 2 days — to Friday."</text>
+  <text x="84" y="316" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Be specific about cost. Not vague.</text>
+  <!-- arrow -->
+  <line x1="300" y1="324" x2="300" y2="340" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1s" repeatCount="indefinite"/></line>
+  <polygon points="295,340 300,348 305,340" fill="#00d4aa"/>
+  <rect x="60" y="350" width="480" height="66" rx="10" fill="#1a1d27" stroke="#ffd93d" stroke-width="1.5"/>
+  <rect x="60" y="350" width="5" height="66" rx="2" fill="#ffd93d"/>
+  <text x="84" y="373" font-family="Segoe UI,sans-serif" font-size="10" fill="#ffd93d" font-weight="700">STEP 3 — Offer a choice</text>
+  <text x="84" y="391" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6">"Original scope Thu, or expanded scope Fri. Which matters more?"</text>
+  <text x="84" y="408" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Give ownership of the tradeoff to them.</text>
+  <!-- arrow -->
+  <line x1="300" y1="416" x2="300" y2="432" stroke="#ffd93d" stroke-width="1.5" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1s" repeatCount="indefinite"/></line>
+  <polygon points="295,432 300,440 305,432" fill="#ffd93d"/>
+  <rect x="60" y="442" width="480" height="56" rx="10" fill="#1a1d27" stroke="#ff6b6b" stroke-width="1.5"/>
+  <rect x="60" y="442" width="5" height="56" rx="2" fill="#ff6b6b"/>
+  <text x="84" y="462" font-family="Segoe UI,sans-serif" font-size="10" fill="#ff6b6b" font-weight="700">STEP 4 — Document the decision</text>
+  <text x="84" y="480" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6">"Confirming: [option]. Delivery by [date]." → One email.</text>
+  <line x1="60" y1="512" x2="540" y2="512" stroke="#2e3250" stroke-width="1"/>
+  <text x="300" y="530" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">#StakeholderManagement  #DataAnalyst  #CareerGrowth</text>
+  <text x="300" y="548" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#ff6b6b" opacity="0.7">Sri Vaishnavi Devarashetty · Senior Data Analyst</text>
+</svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 7 — Tableau LOD
+════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s7">
+<svg class="card" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg7" cx="50%" cy="50%"><stop offset="0%" stop-color="#1a2027"/><stop offset="100%" stop-color="#0f1117"/></radialGradient>
+    <filter id="glow7"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg7)"/>
+  <rect x="0" y="0" width="600" height="4" fill="#00d4aa"/>
+  <circle cx="300" cy="310" r="220" fill="none" stroke="#00d4aa" stroke-width="0.5" stroke-opacity="0.15" stroke-dasharray="6 4">
+    <animateTransform attributeName="transform" type="rotate" from="0 300 310" to="360 300 310" dur="30s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="300" cy="310" r="160" fill="none" stroke="#6c63ff" stroke-width="0.5" stroke-opacity="0.12" stroke-dasharray="4 6">
+    <animateTransform attributeName="transform" type="rotate" from="360 300 310" to="0 300 310" dur="20s" repeatCount="indefinite"/>
+  </circle>
+  <text x="300" y="56" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#00d4aa" letter-spacing="3" font-weight="600">TABLEAU</text>
+  <text x="300" y="92" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="30" fill="#e8eaf6" font-weight="700">LOD Expressions</text>
+  <text x="300" y="116" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#8b92b8">Control exactly what your calculation sees</text>
+  <line x1="60" y1="130" x2="540" y2="130" stroke="#2e3250" stroke-width="1"/>
+  <!-- Three LOD cards -->
+  <!-- FIXED -->
+  <rect x="60" y="148" width="480" height="96" rx="10" fill="#1a1d27" stroke="#6c63ff" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="60" y="148" width="5" height="96" rx="2" fill="#6c63ff"/>
+  <text x="84" y="170" font-family="Segoe UI,sans-serif" font-size="14" fill="#6c63ff" font-weight="700">FIXED</text>
+  <rect x="80" y="176" width="440" height="24" rx="4" fill="#0f1117"/>
+  <text x="90" y="192" font-family="Consolas,monospace" font-size="10.5" fill="#6c63ff">{ FIXED </text><text x="145" y="192" font-family="Consolas,monospace" font-size="10.5" fill="#ffd93d">[Customer ID]</text><text x="264" y="192" font-family="Consolas,monospace" font-size="10.5" fill="#e8eaf6"> : </text><text x="276" y="192" font-family="Consolas,monospace" font-size="10.5" fill="#00d4aa">SUM([Revenue])</text><text x="396" y="192" font-family="Consolas,monospace" font-size="10.5" fill="#6c63ff"> }</text>
+  <text x="84" y="218" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Ignores all filters. Use for: cohort LTV, customer totals.</text>
+  <text x="84" y="234" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.6">→ Revenue per customer regardless of date filter applied</text>
+  <!-- INCLUDE -->
+  <rect x="60" y="256" width="480" height="96" rx="10" fill="#1a1d27" stroke="#00d4aa" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="60" y="256" width="5" height="96" rx="2" fill="#00d4aa"/>
+  <text x="84" y="278" font-family="Segoe UI,sans-serif" font-size="14" fill="#00d4aa" font-weight="700">INCLUDE</text>
+  <rect x="80" y="284" width="440" height="24" rx="4" fill="#0f1117"/>
+  <text x="90" y="300" font-family="Consolas,monospace" font-size="10.5" fill="#00d4aa">{ INCLUDE </text><text x="158" y="300" font-family="Consolas,monospace" font-size="10.5" fill="#ffd93d">[Product]</text><text x="230" y="300" font-family="Consolas,monospace" font-size="10.5" fill="#e8eaf6"> : </text><text x="242" y="300" font-family="Consolas,monospace" font-size="10.5" fill="#6c63ff">AVG([Revenue])</text><text x="360" y="300" font-family="Consolas,monospace" font-size="10.5" fill="#00d4aa"> }</text>
+  <text x="84" y="326" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Adds granularity below view level. Use for: sub-group averages.</text>
+  <text x="84" y="342" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.6">→ Avg revenue per product even when view shows category</text>
+  <!-- EXCLUDE -->
+  <rect x="60" y="364" width="480" height="96" rx="10" fill="#1a1d27" stroke="#ffd93d" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="60" y="364" width="5" height="96" rx="2" fill="#ffd93d"/>
+  <text x="84" y="386" font-family="Segoe UI,sans-serif" font-size="14" fill="#ffd93d" font-weight="700">EXCLUDE</text>
+  <rect x="80" y="392" width="440" height="24" rx="4" fill="#0f1117"/>
+  <text x="90" y="408" font-family="Consolas,monospace" font-size="10.5" fill="#ffd93d">{ EXCLUDE </text><text x="163" y="408" font-family="Consolas,monospace" font-size="10.5" fill="#ffd93d">[Month]</text><text x="220" y="408" font-family="Consolas,monospace" font-size="10.5" fill="#e8eaf6"> : </text><text x="232" y="408" font-family="Consolas,monospace" font-size="10.5" fill="#00d4aa">SUM([Revenue])</text><text x="352" y="408" font-family="Consolas,monospace" font-size="10.5" fill="#ffd93d"> }</text>
+  <text x="84" y="434" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Removes dimension. Use for: YoY comparisons, benchmarks.</text>
+  <text x="84" y="450" font-family="Segoe UI,sans-serif" font-size="10" fill="#e8eaf6" opacity="0.6">→ Total revenue ignoring month-level breakdown</text>
+  <line x1="60" y1="476" x2="540" y2="476" stroke="#2e3250" stroke-width="1"/>
+  <text x="300" y="496" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">#Tableau  #TableauTips  #DataVisualization  #DataAnalytics</text>
+  <text x="300" y="514" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#00d4aa" opacity="0.7">Sri Vaishnavi Devarashetty · Senior Data Analyst</text>
+</svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 8 — Metric to Decision
+════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s8">
+<svg class="card" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg8" cx="50%" cy="50%"><stop offset="0%" stop-color="#1d1a1a"/><stop offset="100%" stop-color="#0f1117"/></radialGradient>
+    <filter id="glow8"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg8)"/>
+  <rect x="0" y="0" width="600" height="4" fill="#ff6b6b"/>
+  <circle cx="80" cy="80" r="60" fill="#ff6b6b" opacity="0.04"/>
+  <circle cx="520" cy="520" r="80" fill="#00d4aa" opacity="0.04"/>
+  <text x="300" y="58" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#ff6b6b" letter-spacing="3" font-weight="600">STAKEHOLDER COMMUNICATION</text>
+  <text x="300" y="94" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="28" fill="#e8eaf6" font-weight="700">Metric → Decision</text>
+  <text x="300" y="118" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#8b92b8">This one shift gets your analysis into the boardroom</text>
+  <line x1="60" y1="132" x2="540" y2="132" stroke="#2e3250" stroke-width="1"/>
+  <!-- BAD example -->
+  <rect x="60" y="150" width="480" height="108" rx="12" fill="#ff6b6b" fill-opacity="0.06" stroke="#ff6b6b" stroke-width="1.5" stroke-opacity="0.5"/>
+  <rect x="60" y="150" width="5" height="108" rx="2" fill="#ff6b6b"/>
+  <text x="84" y="172" font-family="Segoe UI,sans-serif" font-size="11" fill="#ff6b6b" font-weight="700">❌  WEAK — Just a number</text>
+  <text x="84" y="196" font-family="Segoe UI,sans-serif" font-size="15" fill="#e8eaf6" font-weight="600">"Activation rate is down 15% MoM"</text>
+  <text x="84" y="218" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">Nobody acts on this. So what? Is it $500 or $500K?</text>
+  <text x="84" y="238" font-family="Segoe UI,sans-serif" font-size="10" fill="#ff6b6b" opacity="0.7">→ Stakeholder reaction: "OK... noted." (nothing changes)</text>
+  <!-- animated arrow down -->
+  <line x1="300" y1="262" x2="300" y2="284" stroke="#8b92b8" stroke-width="1.5">
+    <animate attributeName="y2" values="262;284;262" dur="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="294,278 300,290 306,278" fill="#8b92b8"><animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/></polygon>
+  <!-- GOOD example -->
+  <rect x="60" y="298" width="480" height="136" rx="12" fill="#00d4aa" fill-opacity="0.06" stroke="#00d4aa" stroke-width="1.5" stroke-opacity="0.7"/>
+  <rect x="60" y="298" width="5" height="136" rx="2" fill="#00d4aa"/>
+  <text x="84" y="320" font-family="Segoe UI,sans-serif" font-size="11" fill="#00d4aa" font-weight="700">✅  STRONG — A story with a fix</text>
+  <text x="84" y="344" font-family="Segoe UI,sans-serif" font-size="12.5" fill="#e8eaf6" font-weight="600">"We lost ~340 activations vs last month."</text>
+  <text x="84" y="364" font-family="Segoe UI,sans-serif" font-size="12.5" fill="#e8eaf6">"At $80 avg revenue = $27K not captured."</text>
+  <text x="84" y="384" font-family="Segoe UI,sans-serif" font-size="12.5" fill="#e8eaf6">"Drop starts the 14th — onboarding email changed."</text>
+  <text x="84" y="408" font-family="Segoe UI,sans-serif" font-size="10" fill="#00d4aa" opacity="0.9">→ Stakeholder reaction: "Let's fix this. Can you own it?"</text>
+  <text x="84" y="424" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Villain identified. Dollar amount attached. Cause found.</text>
+  <!-- formula -->
+  <rect x="60" y="448" width="480" height="40" rx="8" fill="#1a1d27" stroke="#ffd93d" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="300" y="464" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#ffd93d" font-weight="600">Formula: Number + Dollar Impact + Root Cause + Date</text>
+  <text x="300" y="480" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Four ingredients. Every time.</text>
+  <line x1="60" y1="504" x2="540" y2="504" stroke="#2e3250" stroke-width="1"/>
+  <text x="300" y="524" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">#DataStorytelling  #StakeholderCommunication  #DataAnalyst</text>
+  <text x="300" y="542" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#ff6b6b" opacity="0.7">Sri Vaishnavi Devarashetty · Senior Data Analyst</text>
+</svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 9 — Junior to Senior Path
+════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s9">
+<svg class="card" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg9" cx="50%" cy="0%"><stop offset="0%" stop-color="#1a1d27"/><stop offset="100%" stop-color="#0f1117"/></radialGradient>
+    <linearGradient id="pathGrad9" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#6c63ff"/><stop offset="100%" stop-color="#00d4aa"/></linearGradient>
+    <filter id="glow9"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg9)"/>
+  <rect x="0" y="0" width="4" height="600" fill="url(#pathGrad9)"/>
+  <text x="300" y="56" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#6c63ff" letter-spacing="3" font-weight="600">CAREER GROWTH</text>
+  <text x="300" y="92" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="28" fill="#e8eaf6" font-weight="700">Junior → Senior Path</text>
+  <text x="300" y="116" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#8b92b8">5 skills that matter more than any certification</text>
+  <line x1="60" y1="130" x2="540" y2="130" stroke="#2e3250" stroke-width="1"/>
+  <!-- animated vertical path -->
+  <line x1="94" y1="152" x2="94" y2="498" stroke="url(#pathGrad9)" stroke-width="2" stroke-dasharray="6 4">
+    <animate attributeName="stroke-dashoffset" from="0" to="-200" dur="3s" repeatCount="indefinite"/>
+  </line>
+  <!-- 5 milestone nodes -->
+  <!-- 1 -->
+  <circle cx="94" cy="172" r="14" fill="#6c63ff" opacity="0.2" filter="url(#glow9)"/>
+  <circle cx="94" cy="172" r="14" fill="none" stroke="#6c63ff" stroke-width="2"/>
+  <text x="94" y="177" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#6c63ff" font-weight="700">1</text>
+  <rect x="120" y="152" width="400" height="42" rx="8" fill="#1a1d27" stroke="#6c63ff" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="140" y="170" font-family="Segoe UI,sans-serif" font-size="13" fill="#e8eaf6" font-weight="600">Stakeholder Communication</text>
+  <text x="140" y="186" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Lead with the recommendation. Not the methodology.</text>
+  <!-- 2 -->
+  <circle cx="94" cy="238" r="14" fill="#6c63ff" opacity="0.18" filter="url(#glow9)"/>
+  <circle cx="94" cy="238" r="14" fill="none" stroke="#6c63ff" stroke-width="2" stroke-opacity="0.8"/>
+  <text x="94" y="243" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#6c63ff" font-weight="700">2</text>
+  <rect x="120" y="218" width="400" height="42" rx="8" fill="#1a1d27" stroke="#6c63ff" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="140" y="236" font-family="Segoe UI,sans-serif" font-size="13" fill="#e8eaf6" font-weight="600">SQL Window Functions</text>
+  <text x="140" y="252" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">RANK, LAG, LEAD, SUM OVER — solve 80% of hard questions.</text>
+  <!-- 3 -->
+  <circle cx="94" cy="304" r="14" fill="#6c63ff" opacity="0.15" filter="url(#glow9)"/>
+  <circle cx="94" cy="304" r="14" fill="none" stroke="#00d4aa" stroke-width="2" stroke-opacity="0.8"/>
+  <text x="94" y="309" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#00d4aa" font-weight="700">3</text>
+  <rect x="120" y="284" width="400" height="42" rx="8" fill="#1a1d27" stroke="#00d4aa" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="140" y="302" font-family="Segoe UI,sans-serif" font-size="13" fill="#e8eaf6" font-weight="600">Data Storytelling</text>
+  <text x="140" y="318" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Dashboards that guide decisions, not just display numbers.</text>
+  <!-- 4 -->
+  <circle cx="94" cy="370" r="14" fill="#00d4aa" opacity="0.12" filter="url(#glow9)"/>
+  <circle cx="94" cy="370" r="14" fill="none" stroke="#00d4aa" stroke-width="2" stroke-opacity="0.7"/>
+  <text x="94" y="375" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#00d4aa" font-weight="700">4</text>
+  <rect x="120" y="350" width="400" height="42" rx="8" fill="#1a1d27" stroke="#00d4aa" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="140" y="368" font-family="Segoe UI,sans-serif" font-size="13" fill="#e8eaf6" font-weight="600">Business Acumen</text>
+  <text x="140" y="384" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Understand P&amp;L, CAC, LTV. Speak finance. Earn your seat.</text>
+  <!-- 5 -->
+  <circle cx="94" cy="436" r="14" fill="#00d4aa" opacity="0.18" filter="url(#glow9)"/>
+  <circle cx="94" cy="436" r="14" fill="none" stroke="#00d4aa" stroke-width="2"/>
+  <text x="94" y="441" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#00d4aa" font-weight="700">5</text>
+  <rect x="120" y="416" width="400" height="42" rx="8" fill="#1a1d27" stroke="#00d4aa" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="140" y="434" font-family="Segoe UI,sans-serif" font-size="13" fill="#e8eaf6" font-weight="600">Documentation Habits</text>
+  <text x="140" y="450" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Define every metric. Future-you will thank you.</text>
+  <!-- animated dot on path -->
+  <circle cx="94" cy="172" r="5" fill="#6c63ff" filter="url(#glow9)">
+    <animate attributeName="cy" values="172;436;172" dur="4s" repeatCount="indefinite" calcMode="linear"/>
+    <animate attributeName="fill" values="#6c63ff;#00d4aa;#6c63ff" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <line x1="60" y1="500" x2="540" y2="500" stroke="#2e3250" stroke-width="1"/>
+  <text x="300" y="520" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">#DataAnalyst  #CareerGrowth  #DataAnalytics  #SeniorAnalyst</text>
+  <text x="300" y="538" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#6c63ff" opacity="0.7">Sri Vaishnavi Devarashetty · Senior Data Analyst</text>
+</svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 10 — Full Workflow
+════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s10">
+<svg class="card" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg10" cx="50%" cy="50%"><stop offset="0%" stop-color="#1a1d27"/><stop offset="100%" stop-color="#0f1117"/></radialGradient>
+    <filter id="glow10"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#6c63ff"/><stop offset="50%" stop-color="#00d4aa"/><stop offset="100%" stop-color="#ffd93d"/></linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg10)"/>
+  <rect x="0" y="0" width="600" height="4" fill="url(#flowGrad)"/>
+  <text x="300" y="56" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8" letter-spacing="3" font-weight="600">SQL · TABLEAU · STAKEHOLDERS</text>
+  <text x="300" y="90" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="26" fill="#e8eaf6" font-weight="700">The Full Analyst Workflow</text>
+  <text x="300" y="112" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="12" fill="#8b92b8">Raw data → Executive decision — every time</text>
+  <line x1="40" y1="126" x2="560" y2="126" stroke="#2e3250" stroke-width="1"/>
+  <!-- 5 step flow horizontal with icons -->
+  <!-- step nodes y=240, spread x -->
+  <!-- connecting flow line -->
+  <path id="flowPath10" d="M 80 310 L 160 310 L 200 260 L 280 260 L 320 310 L 400 310 L 440 260 L 520 260" fill="none" stroke="url(#flowGrad)" stroke-width="2" stroke-dasharray="8 5">
+    <animate attributeName="stroke-dashoffset" from="0" to="-260" dur="3s" repeatCount="indefinite"/>
+  </path>
+  <!-- flowing dot -->
+  <circle r="5" fill="#00d4aa" filter="url(#glow10)">
+    <animateMotion dur="3s" repeatCount="indefinite" calcMode="linear">
+      <mpath href="#flowPath10"/>
+    </animateMotion>
+  </circle>
+  <!-- Step blocks stacked -->
+  <!-- 1 -->
+  <rect x="40" y="148" width="520" height="70" rx="10" fill="#1a1d27" stroke="#6c63ff" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="72" cy="183" r="16" fill="#6c63ff" opacity="0.15"/><circle cx="72" cy="183" r="16" fill="none" stroke="#6c63ff" stroke-width="1.5"/>
+  <text x="72" y="188" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#6c63ff" font-weight="700">1</text>
+  <text x="102" y="170" font-family="Segoe UI,sans-serif" font-size="11" fill="#6c63ff" font-weight="700">STAKEHOLDER — Understand the question first</text>
+  <text x="102" y="188" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6">"What decision are you trying to make by when?"</text>
+  <text x="102" y="206" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Don't open SQL until you have this answer. Write it down.</text>
+  <!-- 2 -->
+  <rect x="40" y="228" width="520" height="62" rx="10" fill="#1a1d27" stroke="#00d4aa" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="72" cy="259" r="16" fill="#00d4aa" opacity="0.12"/><circle cx="72" cy="259" r="16" fill="none" stroke="#00d4aa" stroke-width="1.5"/>
+  <text x="72" y="264" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#00d4aa" font-weight="700">2</text>
+  <text x="102" y="248" font-family="Segoe UI,sans-serif" font-size="11" fill="#00d4aa" font-weight="700">SQL — Pull and validate your data</text>
+  <text x="102" y="266" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6">Query → QA row counts → Check nulls → Reconcile totals</text>
+  <text x="102" y="282" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">Never skip the QA step. Bad data = wasted presentation.</text>
+  <!-- 3 -->
+  <rect x="40" y="300" width="520" height="62" rx="10" fill="#1a1d27" stroke="#ffd93d" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="72" cy="331" r="16" fill="#ffd93d" opacity="0.12"/><circle cx="72" cy="331" r="16" fill="none" stroke="#ffd93d" stroke-width="1.5"/>
+  <text x="72" y="336" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#ffd93d" font-weight="700">3</text>
+  <text x="102" y="320" font-family="Segoe UI,sans-serif" font-size="11" fill="#ffd93d" font-weight="700">SQL — Find the insight, not just the answer</text>
+  <text x="102" y="338" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6">"What does this mean for the decision in Step 1?"</text>
+  <text x="102" y="354" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">This is the step most analysts skip. Don't.</text>
+  <!-- 4 -->
+  <rect x="40" y="372" width="520" height="62" rx="10" fill="#1a1d27" stroke="#ff9f43" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="72" cy="403" r="16" fill="#ff9f43" opacity="0.12"/><circle cx="72" cy="403" r="16" fill="none" stroke="#ff9f43" stroke-width="1.5"/>
+  <text x="72" y="408" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#ff9f43" font-weight="700">4</text>
+  <text x="102" y="392" font-family="Segoe UI,sans-serif" font-size="11" fill="#ff9f43" font-weight="700">TABLEAU — Build the visual story</text>
+  <text x="102" y="410" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6">One clear view per insight. Design for 30 seconds.</text>
+  <text x="102" y="426" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">If it takes 5 min to read, rebuild it.</text>
+  <!-- 5 -->
+  <rect x="40" y="444" width="520" height="62" rx="10" fill="#1a1d27" stroke="#ff6b6b" stroke-width="1.5" stroke-opacity="0.6"/>
+  <circle cx="72" cy="475" r="16" fill="#ff6b6b" opacity="0.15"/><circle cx="72" cy="475" r="16" fill="none" stroke="#ff6b6b" stroke-width="2"/>
+  <text x="72" y="480" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="13" fill="#ff6b6b" font-weight="700">5</text>
+  <text x="102" y="464" font-family="Segoe UI,sans-serif" font-size="11" fill="#ff6b6b" font-weight="700">STAKEHOLDER — Answer → Evidence → Action</text>
+  <text x="102" y="482" font-family="Segoe UI,sans-serif" font-size="12" fill="#e8eaf6">Lead with your recommendation. Data is the proof.</text>
+  <text x="102" y="498" font-family="Segoe UI,sans-serif" font-size="10" fill="#8b92b8">End with a named action and owner. Every time.</text>
+  <line x1="40" y1="522" x2="560" y2="522" stroke="#2e3250" stroke-width="1"/>
+  <text x="300" y="542" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" fill="#8b92b8">#SQL  #Tableau  #StakeholderCommunication  #DataAnalyst</text>
+  <text x="300" y="558" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="10" fill="#00d4aa" opacity="0.7">Sri Vaishnavi Devarashetty · Senior Data Analyst</text>
+</svg>
+</div>
+
+</div><!-- end card-wrap -->
+
+<div class="hint">
+  Press <strong>← →</strong> keys or use buttons to navigate · <strong>Screenshot</strong> the card area for your LinkedIn image · All 10 cards ready
+</div>
+
+<div class="dots" id="dots"></div>
+
+<script>
+let current = 0;
+const total = 10;
+
+// build dots
+const dotsEl = document.getElementById('dots');
+for (let i = 0; i < total; i++) {
+  const b = document.createElement('button');
+  b.className = 'dot-btn' + (i === 0 ? ' active' : '');
+  b.title = 'Card ' + (i+1);
+  b.onclick = () => goTo(i);
+  dotsEl.appendChild(b);
+}
+
+function goTo(n) {
+  document.getElementById('s' + (current + 1)).classList.remove('active');
+  document.querySelectorAll('.dot-btn')[current].classList.remove('active');
+  current = n;
+  document.getElementById('s' + (current + 1)).classList.add('active');
+  document.querySelectorAll('.dot-btn')[current].classList.add('active');
+  document.getElementById('counter').textContent = (current + 1) + ' / ' + total;
+  document.getElementById('prevBtn').disabled = current === 0;
+  document.getElementById('nextBtn').disabled = current === total - 1;
+}
+
+function go(dir) { goTo(Math.max(0, Math.min(total - 1, current + dir)); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+});
+</script>
+</body>
+</html>
